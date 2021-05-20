@@ -85,5 +85,5 @@ function addItemCart (item) {
 }
 
 itemConfirmation();
-alert("Votre produit a été ajouter au panier");
+alert("Votre produit a été ajouté au panier");
 }
