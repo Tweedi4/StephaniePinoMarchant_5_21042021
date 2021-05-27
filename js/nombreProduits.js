@@ -19,7 +19,7 @@ function itemConfirmation() {
     console.log("test ajout")
 }
 
-//  function de message d'erreur si pas de connexion au serveur
+//  fonction de message d'erreur si pas de connexion au serveur
 function errorMessage() {
 
     let html = "";

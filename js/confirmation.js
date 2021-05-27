@@ -3,7 +3,7 @@ const orderId = JSON.parse (sessionStorage.getItem("orderId"))
 const total = JSON.parse (sessionStorage.getItem('total'))
 
 
-let htm="";
+let html="";
 
 html += ` 
 <h2>Confirmation de votre commande </h2>
@@ -11,7 +11,7 @@ html += `
     <li class="puce">Vos coordonnées</li>
     <li class="puce">Nom: ${contact.lastName}</li>
     <li class="puce">Prénom: ${contact.firstName}</li>
-    <li class="puce">Adresse: ${contact.adress}</li>
+    <li class="puce">Adresse: ${contact.address}</li>
     <li class="puce">Ville: ${contact.city}</li>
     <li class="puce">E-mail: ${contact.email}</li>
 </ul>
