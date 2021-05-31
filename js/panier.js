@@ -38,8 +38,8 @@ function displayQuantity() {
             html +=`<tr>
                         <td class="old"><img src="${product.imageUrl}" alt="Images ours" style="width:100px;"></td>
                         <td class="old">${product.name}</td>
-                        <td class="old">${product.selectColors}</td>
-                        <td class="old" style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
+                        <td class="colorsText">${product.selectColors}</td>
+                        <td class="quantityText" style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
                         <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></td>
                         <td class="old" style="padding-left:50px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
@@ -52,7 +52,7 @@ function displayQuantity() {
         boxSection.insertAdjacentHTML("beforeend",
             `<div class="total" style="margin-left:5%;">
                 <p class="cart-section" style="margin-right:5%;"><b>Total: ${(total/100).toFixed(2).replace(".",",")}€</b></p>
-                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;          box-shadow: 0px 0px 8px 0px white; margin-left:5%;">
+                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;box-shadow: 0px 0px 8px 0px white; margin-left:5%;">
                     <p>Annuler le panier</p>
                 </button>
             </div>`
@@ -67,7 +67,7 @@ function displayQuantity() {
                     </div>
                     <div class="details__form">
                         <label for="name">NOM</label>
-                        <input type="text" name="name" id="name" placeholder="Dubois" maxlength="25" pattern="[a-zA-ZÀ-ÿ]{2,}" required />
+                        <input type="text" name="name" id="lastname" placeholder="Dubois" maxlength="25" pattern="[a-zA-ZÀ-ÿ]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="address">ADRESSE</label>
@@ -81,7 +81,7 @@ function displayQuantity() {
                         <label for="email">EMAIL</label>
                         <input type="email" name="email" id="email" placeholder="Veuillez entrer une adresse valide: adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
                     </div>
-                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 8px 0px white; margin: 30px 0 0 45%;">
+                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 15px 0px black; margin: 30px 0 0 45%;padding: 10px;">
                         <p>Valider votre commande</p>
                     </button>
                 </form>`
@@ -202,11 +202,11 @@ function updateNumberArticles() {
 
 //Récupère les valeurs de l'input dans contact__form
 //Récupère les id des produits du panier dans le tableau products
-//Objet contact et le tableau produit sont envoyé dans la function postOrder
+//Objet contact et le tableau produit sont envoyé dans la fonction postOrder
 function sendform() {
     let contact = {
         firstName: document.getElementById("firstname").value,
-        lastName: document.getElementById("name").value,
+        lastName: document.getElementById("lastname").value,
         address: document.getElementById("address").value,
         city: document.getElementById("city").value,
         email: document.getElementById("email").value
