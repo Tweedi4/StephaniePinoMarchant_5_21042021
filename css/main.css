@@ -4,11 +4,11 @@
     padding: 0; 
 }
   
-  body {
+body {
     overflow-x: hidden; 
 }
 
-  a {
+a {
     text-decoration: none;
     color: black; 
 }
@@ -18,10 +18,12 @@ h1 {
     text-align: center;
     margin: 20px;
 }
+
 h2 {
     text-align: center;
     margin: 20px;
 }
+
 h3 {
     text-align: center;
 }
@@ -79,19 +81,6 @@ nav {
     justify-content: flex-end;
 
 }
-
-
-
-footer {
-    display: flex;
-    justify-content: space-around;
-    background-color: #f3e9f1;
-    width: 100%; 
-}
-footer a {
-    padding: 20px 0 20px 0; 
-}
-
 
 .item {
     width: 45%;
@@ -160,11 +149,13 @@ footer a {
         box-shadow: 0px 0px 25px 0px #000000;
     }
  
-
+    
 #order__confirmed {
     background: linear-gradient(to top right, #f3e9f1, #915cf3ce);
-    height: 48rem; 
+    height: 48rem;
+    width: 100%;
 }
+
 
 .puce {
     padding: 20px;
@@ -196,16 +187,28 @@ table {
     padding-bottom: 20px;
     text-align: center;
     background: linear-gradient(to top right, #f3e9f1, #915cf3ce);
-    color: #ffffff;
+    color: #080808;
     box-shadow: 0px 0px 12px 2px #f3e9f1;
     border-radius: 10px; 
+}
+
+.confirmation__style {
+    display:flex;
 }
 
 footer {
     display: flex;
     justify-content: space-around;
     background-color: #f3e9f1;
-    width: 100%; }
+    width: 100%;
+    position:absolute;
+}
+
+footer p {
+    padding: 20px 0 20px 0; 
+}
+
+
     
 @media screen and (max-width: 550px) {
     header ul {
@@ -225,12 +228,66 @@ footer {
         display: none;
     }
 
+    
+
+    .item {
+        width: 80%;
+    }
+
     .item img  {
         height: 150px;
     }
 
-    .item {
-        width: 70%;
+    #item__details {
+        width: 80%;
+
     }
+
+    table {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+     table td {
+         padding: 10px 0 0 10px
+     }
+
+     th {
+        visibility: hidden; 
+    }
+
+     .quantityText {
+         padding-left: 25px !important;
+     }
+     
+     .delete__item {
+         visibility: collapse;
+     }
+    
+
+}
+
+@media screen and (max-width: 1024px) {
+    
+    .cart-section {
+        text-align: center;
+    }
+  
+}
+
+
+@media screen and (max-width: 780px) {
+
+  .item img {
+        height: 200px; 
+    } 
+
+}
+
+@media screen and (max-width: 660px) {
+
+  .item img {
+        height: 150px; 
+    } 
 
 }

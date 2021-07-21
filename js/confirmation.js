@@ -18,7 +18,7 @@ html += `
 </ul>
 <h3>Total: ${(total/100).toFixed(2).replace(".",",")} €</h3>
 <h3>Numéro de commande: ${orderId}</h3>`
-document.getElementbyId("order__confirmed").innerHTML = html;
+document.getElementById("order__confirmed").innerHTML = html;
 
 
 sessionStorage.removeItem('contact');

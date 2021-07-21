@@ -42,7 +42,7 @@ function displayQuantity() {
                         <td class="quantityText" style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
                         <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></td>
-                        <td class="old" style="padding-left:50px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
+                        <td class="old" style="padding-left:25px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
                         <td><button class="delete__item ${index}" style="background-color:white; padding:0 5px 0 5px;">Supprimer</button></td>
                     </tr>`
             document.querySelector(".order__details").innerHTML = html;
@@ -81,7 +81,7 @@ function displayQuantity() {
                         <label for="email">EMAIL</label>
                         <input type="email" name="email" id="email" placeholder="Veuillez entrer une adresse valide: adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
                     </div>
-                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 15px 0px black; margin: 30px 0 0 45%;padding: 10px;">
+                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 15px 0px black; margin: 20px auto 0 auto;padding: 10px; display: flex;">
                         <p>Valider votre commande</p>
                     </button>
                 </form>`
