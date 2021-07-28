@@ -14,19 +14,15 @@ function displayQuantity() {
 
         boxSection.insertAdjacentHTML("afterbegin",
             `<h1>Panier</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Articles</th>              
-                        <th>Nom</th>
-                        <th>Couleurs</th>
-                        <th>Nombre<br>d'articles</th>
-                        <th>Prix</th>
-                    </tr>
-                </thead>
-                <tbody class="order__details">
-                </tbody>
-            </table>`
+            <div>
+                    <ul class="panier__details" style="visibility:collapse">            
+                        <li>Nom</li>
+                        <li>Quantité</li>
+                        <li>Prix</li>
+                    </ul>
+                <div class="order__details">
+                </div>
+            </div>`
         );
         
         let html = "";
@@ -35,24 +31,23 @@ function displayQuantity() {
             
             total = total + (product.price * product.quantity);
 
-            html +=`<tr>
-                        <td class="old"><img src="${product.imageUrl}" alt="Images ours" style="width:100px;"></td>
-                        <td class="old">${product.name}</td>
-                        <td class="colorsText">${product.selectColors}</td>
-                        <td class="quantityText" style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
+            html +=`<div class="panier__order">
+                        <div>${product.name}</div>
+                        <div class="colorsText">${product.selectColors}</div>
+                        <div class="quantityText"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
-                        <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></td>
-                        <td class="old" style="padding-left:25px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
-                        <td><button class="delete__item ${index}" style="background-color:white; padding:0 5px 0 5px;">Supprimer</button></td>
-                    </tr>`
+                        <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></div>
+                        <div style="padding-left:25px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</div>
+                        <div><button class="delete__item ${index}" style="background-color:white;"><i class="fas fa-trash-alt" style="padding:5px";></i></button></div>
+                    </div>`
             document.querySelector(".order__details").innerHTML = html;
         })
 
         //Total prix + boutton annuler commande    
         boxSection.insertAdjacentHTML("beforeend",
-            `<div class="total" style="margin-left:5%;">
-                <p class="cart-section" style="margin-right:5%;"><b>Total: ${(total/100).toFixed(2).replace(".",",")}€</b></p>
-                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;box-shadow: 0px 0px 8px 0px white; margin-left:5%;">
+            `<div class="total">
+                <p class="cart-section"><b>Total: ${(total/100).toFixed(2).replace(".",",")}€</b></p>
+                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;box-shadow: 0px 0px 15px 0px black;position: relative;top: 10px;padding: 10px;">
                     <p>Annuler le panier</p>
                 </button>
             </div>`
@@ -87,7 +82,7 @@ function displayQuantity() {
                 </form>`
         );
 
-        // L'ecoute du boutton -
+        // L'écoute boutton -
         const decreaseItem = document.querySelectorAll(".decrease__item ");
         decreaseItem.forEach((btn) => {
 
@@ -95,7 +90,7 @@ function displayQuantity() {
             removeOneItem(e, items);
             })
         })
-        // L'ecoute des bouttons +
+        // écoute bouttons +
         const increaseItem = document.querySelectorAll(".increase__item");
         increaseItem.forEach((btn) => {
 
@@ -111,7 +106,7 @@ function displayQuantity() {
             deleteItemSelect(e, items);
             });
         });
-        //annuler
+        //annuler "cancelOrdered"
         const cancelOrdered = document.querySelector(".cancel__ordered");
         cancelOrdered.addEventListener('click', () => {
             cancelMyOrdered();
@@ -129,15 +124,13 @@ function displayQuantity() {
         boxSection.insertAdjacentHTML("afterbegin",
             `<h2>Panier</h2>
             <p class="cart-section" style="font-size:25px;">
-                Vous n'avez aucun article!<a href="./index.html"><b>Revenir à la page d'accueil</b></a>
+                Vous n'avez aucun article!<a href="./index.html">  <b>Cliquer ici pour revenir à la page d'accueil</b></a>
             </p>`
         )
     }
 }
 
-// =====================================================================================
-
-// Ajoute "1" d'un article
+// Ajoute "1" article
 function addOneItem(e, items) {
     let index = e.target.classList[1].slice(-1);
     items[index].quantity++;
@@ -145,9 +138,7 @@ function addOneItem(e, items) {
     updateNumberArticles();
 }
 
-// =====================================================================================
-
-// Enlève "1" d'un article, en arrivant à zéro il est supprimé
+// Enlève "1" article, en arrivant à zéro il est supprimé
 function removeOneItem(e, items) {
     let index = e.target.classList[1].slice(-1);
     items[index].quantity--;
@@ -165,11 +156,10 @@ function removeOneItem(e, items) {
     updateNumberArticles();
 }
 
-// =====================================================================================
- 
-//Supprime l'article sélectionné.
+//Supprime l'article sélectionné "deleteItemSelect"
 //Récupère l'index de l'article correspondant avec le caractère du nom de la classe. 
 //Supprime le bon article dans le tableau "items" du sessionStorage
+
 function deleteItemSelect(e, items) {
     let index = e.target.classList[1].slice(-1);
     items.splice(index, 1);
@@ -181,15 +171,12 @@ function deleteItemSelect(e, items) {
     updateNumberArticles();
 }
 
-// =====================================================================================
-
 //Annulation tout le panier
+
 function cancelMyOrdered() {
     sessionStorage.removeItem('anyItem');
     updateNumberArticles();
 }
-
-// =====================================================================================
 
 //Réinitialise la section "item__select" et le nombre d'article dans le panier
 function updateNumberArticles() {
@@ -198,7 +185,7 @@ function updateNumberArticles() {
     itemConfirmation();
 }
 
-// =====================================================================================
+
 
 //Récupère les valeurs de l'input dans contact__form
 //Récupère les id des produits du panier dans le tableau products

@@ -16,14 +16,14 @@ function itemConfirmation() {
         });
     }
     div.textContent = nomber;
-    console.log("test ajout")
+    console.log("test ajout articles")
 }
 
-//  fonction de message d'erreur si pas de connexion au serveur
+//  fonction "errorMessage" message d'erreur si pas de connexion au serveur
 function errorMessage() {
 
     let html = "";
    
-    html += `<p class="section__error" style=" font-size:30px;"><b>"Impossible de se connecter, vérifiez votre réseau et reessayer"<b></p>`
+    html += `<p class="section__error" style=" font-size:30px;"><b>"Vous n'êtes pas connecté, vérifiez votre réseau et reessayer"<b></p>`
     document.querySelector(".error").innerHTML = html;
 }
