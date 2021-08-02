@@ -84,6 +84,7 @@ function addItemCart (item) {
     sessionStorage.setItem('anyItem', JSON.stringify(cartItem));
 }
 
+//Message de confirmation d'ajout au panier
 itemConfirmation();
 alert("Votre produit a été ajouté au panier");
 }

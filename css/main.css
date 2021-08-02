@@ -98,7 +98,6 @@ nav {
 .panier__order {
     display: flex;
     justify-content: center;
-    column-gap: 40px;
     margin: 20px;
     padding: 20px;
 }
@@ -250,7 +249,11 @@ footer p {
         display: none;
     }
 
-    
+
+    .order__details {
+        display: grid;
+    }
+
 
     .item {
         width: 80%;

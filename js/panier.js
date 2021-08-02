@@ -32,13 +32,13 @@ function displayQuantity() {
             total = total + (product.price * product.quantity);
 
             html +=`<div class="panier__order">
-                        <div>${product.name}</div>
-                        <div class="colorsText">${product.selectColors}</div>
-                        <div class="quantityText"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
+                        <div style="margin-right: 20px;">${product.name}</div>
+                        <div class="colorsText " style="margin-right: 10px;">${product.selectColors}</div>
+                        <div class="quantityText" style="margin-right: 10px; display: ruby;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
                         <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></div>
-                        <div style="padding-left:25px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</div>
-                        <div><button class="delete__item ${index}" style="background-color:white;"><i class="fas fa-trash-alt" style="padding:5px";></i></button></div>
+                        <div style="margin-left: 20px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</div>
+                        <div style="margin-left: 20px;"><button class="delete__item ${index}" style="background-color:white;"><i class="fas fa-trash-alt" style="padding:5px";></i></button></div>
                     </div>`
             document.querySelector(".order__details").innerHTML = html;
         })
